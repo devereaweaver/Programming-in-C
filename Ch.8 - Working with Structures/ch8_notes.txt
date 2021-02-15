@@ -1,0 +1,115 @@
+=================================================
+= Ch.8 - Working with Structures		=
+=================================================
+Structures in C are used to group together sets of variables 
+	that are logically related. 
+
+Syntax:
+-------------------------------------------------
+struct stuct_name
+{
+	type member1;
+	type member2;
+	type member3; // add as many as needed
+};
+
+-------------------------------------------------
+Declaration:
+------------
+struct struct_name struct_object;  // you can declare multiple
+				   // on the same line 
+-------------------------------------------------
+
+To access the member variables of a struct, use 
+	the dot operator. (go about it as you would in other 
+	programming languages)
+
+You can also use the member of operator (->) when you have 
+	a pointer to the struct to access the members.
+
+
+//===============================================
+// Initializing Structures
+//==============================================
+Initializing structures is similar to initializing 
+	arrays
+
+Syntax example:
+--------------
+struct date today = {7, 2, 2015};  // initialize date struct values 
+struct time now = {19, 26, 39};    // initialize h:m:s for time struct
+
+Key: the initial values inside the {} must be constant expressions
+
+If fewer values are listed inside the {}, ten the missing value is
+	undefined.
+
+You can also initialize the members in any order using an 
+	initialization list.
+
+Syntax example:
+---------------
+struct time t0 = {.hour=12; .minutes=10}; // set only two members
+					  // in any order
+
+//-----------------------------------------------
+Compound Literals
+//-----------------------------------------------
+You can assign one or more values to a struct in a single statement
+	using what is known as compound literals. 
+
+Syntax example:
+today = (struct date) {1, 2, 2013};
+
+For this, the type cast operator is used to tell teh compliler the type of
+	the expression and is followed by the list of values that are to be
+	assigned to the members of the structure, in order. 
+
+** For my personal use, I don't really intend to use compound literals;
+	however, it is good to know that they exist and be able to 
+	recognize them when reading other people's code. 
+
+//===============================================
+// Arrays of Structures
+//==============================================
+In C, it is valid to define an array of structures.
+
+To access values, simply type the array name and index of 
+	the specific struct. Then, use the dot operator to 
+	access the value of the variable.
+
+To pass the entire structure contained in an array to a function, 
+	you pass the array element that represents the struct. 
+
+Initialization of arrays containing structures is similar to initialization
+	of multidimensional arrays
+
+** Arrays of structures are very "powerful and important" in C, so be sure
+	to take care in understanding this concept. **
+
+In memory, each set of n elements correspond to a set of n variables for a 
+	particular element, each element in this case is a struct. (i.e.
+	each set of n elements make up the values in each struct)  
+
+//===============================================
+// Structures Containing Structures and Arrays
+//==============================================
+C provides the programmer with the ability to declare structures 
+	within structures. 
+
+C also provides the programmer with the ability to create a structure
+	that contains arrays. 
+	- this is common and useful when setting up an array of characters
+	in a structure that can be used to represent some character string
+
+When attempting to initialize or access these values, think about how 
+	you would access values in a multidimensional array
+
+//===============================================
+// Structures Containing Structures and Arrays
+//==============================================
+Structures can be defined/implemented in more than one way
+
+It is also valid to declare a variable to be of a particular structure 
+	type at the same time that the structure is defined
+
